@@ -1,0 +1,1102 @@
+/* ========================================
+   1. O'ZGARUVCHILAR VA UMUMIY STILLAR
+   ======================================== */
+:root {
+    --primary-color: #0056b3;
+    --secondary-color: #007bff;
+    --dark-color: #2c3e50;
+    --light-color: #f8f9fa; /* Fon uchun yanada ochroq rang */
+    --white-color: #ffffff;
+    --gray-color: #869096; /* Bo'g'iq kulrang (kontrast uchun biroz to'qroq) */
+    --border-color: #dee2e6; /* Chegara chiziqlari uchun o'zgaruvchi */
+
+    /* Tipografiya uchun o'zgaruvchilar */
+    --font-family-base: "Montserrat", sans-serif;
+    --line-height-base: 1.7;
+}
+
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth; /* Sahifadagi #havolalarga silliq o'tish uchun */
+}
+
+body {
+    font-family: var(--font-family-base);
+    line-height: var(--line-height-base);
+    background-color: var(--white-color);
+    color: var(--dark-color);
+    -webkit-font-smoothing: antialiased; /* Shriftlarni yanada silliq ko'rsatish */
+}
+
+/* Form elementlari shriftni meros qilib olishi uchun */
+button,
+input,
+textarea,
+select {
+    font-family: inherit;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+a {
+    text-decoration: none;
+    color: var(--secondary-color);
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: var(--primary-color);
+}
+
+ul {
+    list-style: none;
+}
+
+/* Kirishuvchanlik (Accessibility) uchun fokus stillari */
+:focus-visible {
+    outline: 3px solid var(--secondary-color);
+    outline-offset: 3px;
+    border-radius: 4px;
+}
+
+/* ========================================
+   2. HEADER
+   ======================================== */
+.site-header {
+    background: var(--white-color);
+    padding: 15px 0;
+    box-shadow: 0 2px 10px rgba(44, 62, 80, 0.08); /* Soya rangi o'zgaruvchiga bog'landi */
+    position: sticky;
+    top: 0;
+    z-index: 101; /* Overlay ustida turishi uchun */
+}
+
+.site-header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.site-logo {
+    font-size: 26px;
+    font-weight: 700;
+    color: var(--dark-color);
+}
+.site-logo:hover {
+    color: var(--dark-color); /* Logotip rangi o'zgarmasin */
+}
+
+.site-nav ul {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.site-nav a {
+    color: var(--dark-color);
+    font-weight: 600;
+    padding: 8px 12px;
+    position: relative;
+}
+
+.site-nav a::after {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--primary-color);
+    transition: width 0.4s ease;
+}
+
+.site-nav a:hover::after,
+.site-nav a:focus-visible::after {
+    width: 100%;
+}
+
+/* Tugma stillari */
+.cta-button {
+    background-color: var(--primary-color);
+    color: var(--white-color);
+    border-radius: 5px;
+    padding: 8px 12px; /* Boshqa menyu punktlari bilan bir xil */
+    font-weight: 600;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+.cta-button:hover,
+.cta-button:focus-visible {
+    background-color: var(--secondary-color);
+    color: var(--white-color);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+.cta-button:hover::after {
+    width: 0; /* Tugma uchun chiziq kerak emas */
+}
+
+/* ========================================
+   3. HERO SECTION
+   ======================================== */
+.hero {
+    color: var(--white-color);
+    height: 65vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+}
+
+.hero::before {
+    /* Rasm va qora qatlamni pseudo-elementga o'tkazdik */
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+        url("https://media.istockphoto.com/id/1409722748/ru/%D1%84%D0%BE%D1%82%D0%BE/%D1%81%D1%82%D1%83%D0%B4%D0%B5%D0%BD%D1%82%D1%8B-%D0%BF%D0%BE%D0%B4%D0%BD%D0%B8%D0%BC%D0%B0%D1%8E%D1%82-%D1%80%D1%83%D0%BA%D0%B8-%D0%B2-%D1%82%D0%BE-%D0%B2%D1%80%D0%B5%D0%BC%D1%8F-%D0%BA%D0%B0%D0%BA-%D1%83%D1%87%D0%B8%D1%82%D0%B5%D0%BB%D1%8C-%D0%B7%D0%B0%D0%B4%D0%B0%D0%B5%D1%82-%D0%B8%D0%BC-%D0%B2%D0%BE%D0%BF%D1%80%D0%BE%D1%81%D1%8B-%D0%B2-%D0%BA%D0%BB%D0%B0%D1%81%D1%81%D0%B5.jpg?s=612x612&w=0&k=20&c=OYC1715f-GmGL_g5nUHT8oLnPSicHnH9hcXKA5yPWTE=");
+    background-size: cover;
+    background-position: center;
+    z-index: -1;
+}
+
+.hero-content {
+    max-width: 700px;
+    padding: 0 20px;
+}
+
+.hero-content h1 {
+    font-size: 52px;
+    margin-bottom: 15px;
+    line-height: 1.2;
+}
+
+.hero-content p {
+    font-size: 20px;
+    margin-bottom: 30px;
+    opacity: 0.9;
+}
+
+.hero-button {
+    background-color: var(--white-color);
+    color: var(--dark-color);
+    padding: 14px 30px;
+    font-size: 16px;
+    font-weight: 700;
+    border-radius: 5px;
+    display: inline-block;
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
+}
+
+.hero-button:hover,
+.hero-button:focus-visible {
+    background-color: var(--primary-color);
+    color: var(--white-color);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+/* ========================================
+   3.5. AFZALLIKLAR BO'LIMI
+   ======================================== */
+.features-section {
+    padding: 80px 0;
+    background-color: var(--light-color);
+}
+
+.section-title {
+    text-align: center;
+    font-size: 36px;
+    margin-bottom: 50px;
+    font-weight: 700;
+}
+
+.features-grid {
+    display: grid;
+    /* 3 ta bir xil o'lchamdagi ustun yaratamiz */
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px; /* Kartochkalar orasidagi masofa */
+}
+
+.feature-card {
+    background-color: var(--white-color);
+    padding: 40px 30px;
+    text-align: center;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.feature-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 25px rgba(44, 62, 80, 0.1);
+}
+
+.card-icon {
+    font-size: 42px;
+    color: var(--primary-color);
+    margin-bottom: 20px;
+}
+
+.card-title {
+    font-size: 22px;
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+.card-text {
+    font-size: 16px;
+    color: var(--gray-color);
+    line-height: 1.6;
+}
+
+/* ========================================
+   3.6. SO'NGGI YANGILIKLAR BO'LIMI
+   ======================================== */
+.news-section {
+    padding: 80px 0;
+}
+
+.news-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+.news-card {
+    background-color: var(--white-color);
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(44, 62, 80, 0.05);
+    overflow: hidden; /* Rasm chegaradan chiqib ketmasligi uchun */
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.news-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 25px rgba(44, 62, 80, 0.1);
+}
+
+.news-card-image {
+    overflow: hidden; /* Rasm kattalashganda chegaradan chiqmasligi uchun */
+}
+
+.news-card-image img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover; /* Rasm o'lchamini to'g'ri saqlaydi */
+    display: block;
+    transition: transform 0.4s ease;
+}
+
+.news-card:hover .news-card-image img {
+    transform: scale(1.05); /* Rasmga silliq kattalashish effekti */
+}
+
+.news-card-content {
+    padding: 25px;
+    flex-grow: 1; /* Kontent qismini cho'zib, kartochka balandligini tenglaydi */
+    display: flex;
+    flex-direction: column;
+}
+
+.news-card-meta {
+    font-size: 14px;
+    color: var(--gray-color);
+    margin-bottom: 10px;
+}
+.news-card-meta .fas {
+    margin-right: 5px;
+}
+
+.news-card-title {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 15px;
+    line-height: 1.4;
+}
+
+.news-card-title a {
+    color: var(--dark-color);
+}
+
+.news-card-excerpt {
+    font-size: 15px;
+    margin-bottom: 20px;
+    flex-grow: 1; /* Matn qismini cho'zib, "Batafsil" tugmasini pastga suradi */
+}
+
+.news-card-readmore {
+    font-weight: 600;
+    color: var(--primary-color);
+}
+.news-card-readmore:hover {
+    text-decoration: underline;
+}
+
+/* Umumiy tugma stili */
+.section-cta {
+    text-align: center;
+    margin-top: 50px;
+}
+
+.button-primary {
+    background-color: var(--primary-color);
+    color: var(--white-color);
+    padding: 14px 30px;
+    font-size: 16px;
+    font-weight: 700;
+    border-radius: 5px;
+    display: inline-block;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.button-primary:hover,
+.button-primary:focus-visible {
+    background-color: var(--secondary-color);
+    color: var(--white-color);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+/* ========================================
+   3.7. GALEREYA PREVIEW BO'LIMI
+   ======================================== */
+.gallery-preview-section {
+    padding: 80px 0;
+    background-color: var(--light-color);
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 ustunli setka */
+    gap: 20px;
+}
+
+.gallery-item {
+    position: relative; /* Overlayni to'g'ri joylashtirish uchun */
+    display: block;
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(44, 62, 80, 0.05);
+    aspect-ratio: 1 / 1; /* Rasm kvadrat shaklini saqlab turishi uchun */
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.gallery-item-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(
+        0,
+        86,
+        179,
+        0.7
+    ); /* Asosiy rangimizning shaffof varianti */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--white-color);
+    font-size: 32px;
+    opacity: 0; /* Boshida ko'rinmaydi */
+    transition: opacity 0.4s ease;
+}
+
+/* Hover effekti */
+.gallery-item:hover .gallery-item-overlay {
+    opacity: 1; /* Overlay paydo bo'ladi */
+}
+
+.gallery-item:hover img {
+    transform: scale(1.1); /* Rasm kattalashadi */
+}
+/* ========================================
+   3.8. CHAQUV (CTA) BO'LIMI
+   ======================================== */
+.cta-section {
+    padding: 80px 0;
+    background: linear-gradient(
+        45deg,
+        var(--primary-color),
+        var(--secondary-color)
+    );
+    color: var(--white-color);
+    text-align: center;
+}
+
+.cta-title {
+    font-size: 36px;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.cta-text {
+    font-size: 18px;
+    max-width: 600px;
+    margin: 0 auto 30px auto;
+    opacity: 0.9;
+}
+
+/* Yangi tugma stili (qora fon uchun) */
+.button-light {
+    background-color: var(--white-color);
+    color: var(--primary-color);
+    padding: 14px 30px;
+    font-size: 16px;
+    font-weight: 700;
+    border-radius: 5px;
+    display: inline-block;
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
+}
+
+.button-light:hover,
+.button-light:focus-visible {
+    background-color: var(--light-color);
+    color: var(--primary-color);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+/* ========================================
+   3.9. ICHKI SAHIFALAR UCHUN UMUMIY STILLAR
+   ======================================== */
+.page-header {
+    background-color: var(--primary-color);
+    color: var(--white-color);
+    text-align: center;
+    padding: 60px 20px;
+}
+
+.page-header h1 {
+    font-size: 42px;
+    margin-bottom: 10px;
+}
+
+.page-header p {
+    font-size: 18px;
+    opacity: 0.9;
+}
+
+.about-us-section {
+    padding: 80px 0;
+}
+
+.two-column-layout {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+}
+
+.column-image {
+    flex: 1; /* 50% joy oladi */
+}
+
+.column-image img {
+    width: 100%;
+    border-radius: 8px;
+    box-shadow: 0 10px 25px rgba(44, 62, 80, 0.1);
+}
+
+.column-text {
+    flex: 1; /* 50% joy oladi */
+}
+
+.column-text h2 {
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+.column-text p {
+    font-size: 16px;
+    margin-bottom: 15px;
+    color: var(--gray-color);
+    line-height: 1.8;
+}
+
+.mission-section {
+    background-color: var(--light-color);
+    padding: 80px 0;
+    text-align: center;
+}
+
+.mission-section h2 {
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+.mission-section p {
+    font-size: 20px;
+    font-style: italic;
+    color: var(--gray-color);
+    max-width: 800px;
+    margin: 0 auto;
+}
+/* ========================================
+   3.10. SAHIFALASH (PAGINATION)
+   ======================================== */
+.news-list-section {
+    padding: 80px 0;
+}
+
+.pagination {
+    margin-top: 60px;
+    display: flex;
+    justify-content: center;
+}
+
+.pagination-list {
+    display: flex;
+    gap: 8px;
+}
+
+.page-link {
+    display: block;
+    padding: 10px 16px;
+    color: var(--dark-color);
+    background-color: var(--white-color);
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.page-link:hover {
+    background-color: var(--light-color);
+    color: var(--primary-color);
+}
+
+.page-link.active {
+    background-color: var(--primary-color);
+    color: var(--white-color);
+    border-color: var(--primary-color);
+    cursor: default;
+}
+
+.page-link.disabled {
+    color: var(--gray-color);
+    background-color: var(--light-color);
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+/* ========================================
+   3.11. TO'LIQ GALEREYA SAHIFASI
+   ======================================== */
+.gallery-full-section {
+    padding: 80px 0;
+}
+/* ========================================
+   3.12. BOG'LANISH SAHIFASI
+   ======================================== */
+.contact-section {
+    padding: 80px 0;
+}
+
+/* Forma stillari */
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    font-size: 16px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(0, 86, 179, 0.1);
+}
+
+textarea {
+    resize: vertical; /* Faqat vertikal o'lcham o'zgarishi uchun */
+}
+
+/* Aloqa ma'lumotlari stillari */
+.contact-details p {
+    font-size: 16px;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    color: var(--gray-color);
+}
+
+.contact-details i {
+    color: var(--primary-color);
+    margin-right: 15px;
+    width: 20px;
+    text-align: center;
+}
+
+.contact-info-wrapper h3 {
+    font-size: 24px;
+    margin-top: 40px;
+    margin-bottom: 20px;
+}
+
+/* Xarita uchun responsiv konteyner */
+.map-container {
+    position: relative;
+    padding-bottom: 75%; /* 4:3 nisbat */
+    height: 0;
+    overflow: hidden;
+    border-radius: 8px;
+}
+
+.map-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+/* ========================================
+   3.13. DARS JADVALI SAHIFASI
+   ======================================== */
+.timetable-section {
+    padding: 80px 0;
+}
+
+.class-selector {
+    margin-bottom: 40px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.class-selector label {
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.class-selector select {
+    font-size: 16px;
+    padding: 10px 15px;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    min-width: 200px;
+}
+
+/* Jadval mobil qurilmada siqilib qolmasligi uchun */
+.timetable-wrapper {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch; /* iOS uchun silliq scroll */
+}
+
+.timetable {
+    width: 100%;
+    border-collapse: collapse; /* Chiziqlarni birlashtirish */
+    text-align: center;
+    font-size: 15px;
+    min-width: 800px; /* Mobil qurilmada scroll paydo bo'lishi uchun */
+}
+
+.timetable th,
+.timetable td {
+    padding: 15px 10px;
+    border: 1px solid var(--border-color);
+}
+
+.timetable thead {
+    background-color: var(--primary-color);
+    color: var(--white-color);
+    font-weight: 600;
+}
+
+.timetable tbody tr:nth-child(even) {
+    background-color: var(--light-color); /* Chiziqli fon */
+}
+/* ========================================
+   3.14. E'LONLAR SAHIFASI
+   ======================================== */
+.announcements-section {
+    padding: 80px 0;
+}
+
+.announcement-item {
+    background-color: var(--white-color);
+    border: 1px solid var(--border-color);
+    border-left: 5px solid var(--primary-color); /* Chap tomonda rangli chiziq */
+    border-radius: 5px;
+    padding: 30px;
+    margin-bottom: 30px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.03);
+}
+
+.announcement-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    font-size: 14px;
+    color: var(--gray-color);
+}
+
+.announcement-tag {
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-weight: 700;
+    color: var(--white-color);
+    font-size: 12px;
+}
+/* Teglar uchun turli ranglar */
+.announcement-tag.important {
+    background-color: #dc3545;
+} /* Qizil */
+.announcement-tag.event {
+    background-color: #007bff;
+} /* Ko'k */
+.announcement-tag.info {
+    background-color: #17a2b8;
+} /* Moviy */
+
+.announcement-title {
+    font-size: 24px;
+    margin-bottom: 15px;
+    color: var(--dark-color);
+}
+
+.announcement-content p {
+    line-height: 1.8;
+    color: #555;
+}
+
+.calendar-section {
+    padding: 80px 0;
+}
+.calendar-list h3 {
+    font-size: 28px;
+    color: var(--primary-color);
+    border-bottom: 2px solid var(--border-color);
+    padding-bottom: 10px;
+    margin-top: 40px;
+    margin-bottom: 20px;
+}
+.calendar-item {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    padding: 20px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+.item-date {
+    text-align: center;
+    background-color: var(--light-color);
+    border-radius: 8px;
+    padding: 10px;
+    font-weight: 700;
+}
+.item-date span {
+    display: block;
+    font-size: 32px;
+    color: var(--primary-color);
+}
+.item-content h4 {
+    font-size: 20px;
+    margin-bottom: 5px;
+}
+.item-content p {
+    color: var(--gray-color);
+}
+
+/* ========================================
+   4. FOOTER
+   ======================================== */
+.site-footer {
+    background-color: var(--dark-color);
+    color: var(--light-color);
+    padding: 60px 0 20px;
+}
+
+.footer-widgets {
+    display: flex;
+    justify-content: space-between;
+    gap: 40px;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+}
+
+.footer-widgets .widget {
+    flex: 1;
+    min-width: 220px;
+}
+
+.footer-widgets h4 {
+    margin-bottom: 20px;
+    color: var(--white-color);
+    font-weight: 600;
+}
+
+.footer-widgets p {
+    color: var(--gray-color);
+}
+
+.footer-widgets ul a {
+    color: var(--gray-color);
+    padding: 5px 0;
+    position: relative;
+    display: inline-block; /* O'lcham berish uchun */
+}
+/* Footer stillarini yangilaymiz */
+.footer-widgets {
+    grid-template-columns: repeat(
+        auto-fit,
+        minmax(220px, 1fr)
+    ); /* Avtomatik moslashuvchan ustunlar */
+    display: grid; /* Flex o'rniga Grid ishlatamiz */
+}
+
+.footer-logo {
+    display: inline-block;
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--white-color);
+    margin-bottom: 15px;
+}
+.footer-logo:hover {
+    color: var(--white-color);
+}
+
+.social-links {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+}
+.social-links a {
+    color: var(--gray-color);
+    font-size: 20px;
+    transition: all 0.3s ease;
+}
+.social-links a:hover {
+    color: var(--white-color);
+    transform: translateY(-3px);
+}
+/* Yaxshilangan hover effekti (sakrashsiz) */
+.footer-widgets ul a::before {
+    content: "→";
+    position: absolute;
+    left: -20px;
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+.footer-widgets ul a:hover,
+.footer-widgets ul a:focus-visible {
+    color: var(--white-color);
+    transform: translateX(10px);
+}
+.footer-widgets ul a:hover::before {
+    opacity: 1;
+    left: -15px;
+}
+
+.footer-bottom {
+    text-align: center;
+    border-top: 1px solid var(--border-color);
+    padding-top: 20px;
+    font-size: 14px;
+    color: var(--gray-color);
+}
+
+/* ========================================
+   5. MOBIL VA RESPONSIVE
+   ======================================== */
+
+/* --- Mobil menyu uchun asos stillar --- */
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 28px;
+}
+.close-menu-li {
+    display: none;
+}
+.menu-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 100;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.4s ease, visibility 0.4s ease;
+}
+
+body.menu-is-open .menu-overlay {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* --- Media So'rovlari --- */
+@media (max-width: 992px) {
+    .menu-toggle {
+        display: block;
+        color: var(--dark-color);
+    }
+
+    .site-nav {
+        position: fixed;
+        top: 0;
+        right: 0;
+        width: 300px;
+        max-width: 90%;
+        height: 100vh;
+        background-color: var(--dark-color);
+        padding: 80px 20px 40px;
+        transform: translateX(100%);
+        transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        z-index: 1000;
+        display: flex;
+        flex-direction: column;
+    }
+    body.menu-is-open .site-nav {
+        transform: translateX(0);
+    }
+
+    .site-nav ul {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+        width: 100%;
+    }
+    .site-nav a {
+        color: var(--white-color);
+        font-size: 20px;
+        display: block;
+        width: 100%;
+        padding: 10px 15px;
+    }
+
+    .cta-button {
+        background-color: var(--secondary-color);
+        text-align: center;
+    }
+    .cta-button:hover,
+    .cta-button:focus-visible {
+        background-color: var(--primary-color);
+        transform: none;
+        box-shadow: none;
+    }
+
+    .close-menu-li {
+        display: block;
+        position: absolute;
+        top: 15px;
+        right: 20px;
+    }
+    .close-menu-btn {
+        background: none;
+        border: none;
+        color: var(--white-color);
+        font-size: 36px;
+        cursor: pointer;
+    }
+
+    .hero-content h1 {
+        font-size: 42px;
+    }
+    .hero-content p {
+        font-size: 18px;
+    }
+    /* Afzalliklar bo'limi */
+    .features-grid {
+        grid-template-columns: repeat(2, 1fr); /* Planshetda 2 ta ustun */
+    }
+    .news-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    /* Galereya bo'limi */
+    .gallery-grid {
+        grid-template-columns: repeat(2, 1fr); /* Planshetda 2 ta ustun */
+        gap: 15px;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero {
+        height: 60vh;
+    }
+    .hero-content h1 {
+        font-size: 36px;
+    }
+    .hero-content p {
+        font-size: 16px;
+    }
+
+    .footer-widgets {
+        text-align: center;
+    }
+    .footer-widgets ul a {
+        transform: translateX(0);
+    } /* Mobil uchun hover effektini soddalashtiramiz */
+    .footer-widgets ul a:hover::before,
+    .footer-widgets ul a:focus-visible::before {
+        opacity: 0;
+    }
+    /* Afzalliklar bo'limi */
+    .section-title {
+        font-size: 30px;
+    }
+    .features-grid {
+        grid-template-columns: 1fr; /* Telefonda 1 ta ustun */
+    }
+    /* Yangiliklar bo'limi */
+    .news-grid {
+        grid-template-columns: 1fr;
+    }
+    /* CTA bo'limi */
+    .cta-title {
+        font-size: 30px;
+    }
+    .cta-text {
+        font-size: 16px;
+    }
+    /* Ichki sahifalar */
+    .two-column-layout {
+        flex-direction: column; /* Ustunlarni tagma-tag joylashtiramiz */
+        gap: 30px;
+    }
+
+    .page-header h1,
+    .column-text h2,
+    .mission-section h2 {
+        font-size: 30px;
+    }
+}
